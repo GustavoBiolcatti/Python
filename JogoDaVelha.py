@@ -110,5 +110,3 @@ while jogo or jogadas <= 9:
       
 
         rodada = False
-
-'''print("\n\n{}".format(ExibirJogo()))'''

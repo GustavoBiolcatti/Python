@@ -1,4 +1,3 @@
-
 #TUTORIAL
 print("=" * 15)
 print("{:^15}".format("POSIÇÕES"))
@@ -53,7 +52,8 @@ def InserirPosicao(t):
                     print("\nPosição já preenchida! Digite outra posição.\n")
             else:
                 print("\nPosição fora de index! Digite novamente.\n")
-
+    
+    print("\n")
     print("\n\n{}".format(ExibirJogo()))
 
 
@@ -62,35 +62,43 @@ def VerifGanhou(nome):
     if (tab[0][0][0] == "X" and tab[0][1][0] == "X" and tab[0][2][0] == "X") or (
             tab[0][0][0] == "O" and tab[0][1][0] == "O" and tab[0][2][0] == "O"):
         print("Parabéns {}!".format(nome))
+        quit()
 
     elif (tab[1][0][0] == "X" and tab[1][1][0] == "X" and tab[1][2][0] == "X") or (
             tab[1][0][0] == "O" and tab[1][1][0] == "O" and tab[1][2][0] == "O"):
         print("Parabéns {}!".format(nome))
+        quit()
 
     elif (tab[0][0][0] == "X" and tab[2][1][0] == "X" and tab[2][2][0] == "X") or (
             tab[2][0][0] == "O" and tab[2][1][0] == "O" and tab[2][2][0] == "O"):
         print("Parabéns {}!".format(nome))
+        quit()
 
     elif (tab[0][0][0] == "X" and tab[1][0][0] == "X" and tab[2][0][0] == "X") or (
             tab[0][0][0] == "O" and tab[1][0][0] == "O" and tab[2][0][0] == "O"):
         print("Parabéns {}!".format(nome))
+        quit()
 
     elif (tab[0][1][0] == "X" and tab[1][1][0] == "X" and tab[2][1][0] == "X") or (
             tab[0][1][0] == "O" and tab[1][1][0] == "O" and tab[2][1][0] == "O"):
         print("Parabéns {}!".format(nome))
+        quit()
 
     elif (tab[0][2][0] == "X" and tab[1][2][0] == "X" and tab[2][2][0] == "X") or (
             tab[0][2][0] == "O" and tab[1][2][0] == "O" and tab[2][2][0] == "O"):
         print("Parabéns {}!".format(nome))
+        quit()
 
     if (tab[0][0][0] == "X" and tab[1][1][0] == "X" and tab[2][2][0] == "X") or (
             tab[0][0][0] == "O" and tab[1][1][0] == "O" and tab[2][2][0] == "O"):
         print("Parabéns {}!".format(nome))
+        quit()
 
     elif (tab[0][2][0] == "X" and tab[1][1][0] == "X" and tab[2][0][0] == "X") or (
             tab[0][2][0] == "O" and tab[1][1][0] == "O" and tab[2][0][0] == "O"):
         print("Parabéns {}!".format(nome))
-
+        quit()
+        
 
 #JOGADAS
 

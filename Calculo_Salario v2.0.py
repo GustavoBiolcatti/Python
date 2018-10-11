@@ -1,12 +1,56 @@
-nome = str(input("\nDigite seu nome completo: ").upper().strip())
+# NOME COMPLETO
+verif_nome= True
+while verif_nome:
+    nome = str(input("\nDigite seu nome completo: ").upper().strip())
 
-sb = float(input("\nDigite seu salário bruto: ").replace(",", "."))
+    if nome != "":
+        verif_nome = False
+    else:
+        print("Nome não preenchido! Digite novamente.")
 
-dt = int(input("\nDigite a quantidade de dias trabalhados: ").replace(",", "."))
+# SALÁRIO BRUTO
+verif_sb = True
+while verif_sb:
+    sb = input("\nDigite seu salário bruto: ").replace(",", ".")
 
-he = float(input("\nDigite seu horário de entrada: ").replace(":", "."))
-hs = float(input("\nDigite seu horário de saída: ").replace(":", "."))
+    if sb.isalpha():
+        print("Valor inválido! Digite novamente.")
+    else:
+        sb = float(sb)
+        verif_sb = False
 
+# DIAS TRABALHADOS
+verif_dt = True
+while verif_dt:
+    dt = input("\nDigite a quantidade de dias trabalhados: ").replace(",", ".")
+
+    if dt.isnumeric():
+        dt = int(dt)
+        verif_dt = False
+    else:
+        print("Valor inválido! Digite novamente.")
+
+# HORÁRIO DE ENTRADA
+verif_he = True
+while verif_he:
+    he = input("\nDigite seu horário de entrada: ").replace(":", ".")
+
+    if he.isalpha():
+        print("Valor inválido! Digite novamente.")
+    else:
+        he = float(he)
+
+# HORÁRIO DE SAÍDA
+verif_hs = True
+while verif_hs:
+    he = input("\nDigite seu horário de saída: ").replace(":", ".")
+
+    if hs.isalpha():
+        print("Valor inválido! Digite novamente.")
+    else:
+        hs = float(hs)
+
+# HORAS TRABALHADAS
 ht = (hs - he) * dt
 vh = sb / ht
 

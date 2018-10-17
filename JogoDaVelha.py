@@ -36,7 +36,7 @@ def InserirPosicao(t):
         verif_input = True
         while verif_input:
             l = int(input("Posição na linha: "))
-            c = int(input("Posição na cluna: "))
+            c = int(input("Posição na coluna: "))
 
             #VERIFICA SE A POSIÇÃO ESTÁ DENTRO DO INDICE DA MATRIZ (3X3)
             if 0 <= l <= 3 and 0 <= c <= 3:

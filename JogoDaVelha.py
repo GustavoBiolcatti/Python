@@ -59,43 +59,28 @@ def InserirPosicao(t):
 
 def VerifGanhou(nome):
     '''Verifica se o jogador venceu após sua jogada'''
-    if (tab[0][0][0] == "X" and tab[0][1][0] == "X" and tab[0][2][0] == "X") or (
-            tab[0][0][0] == "O" and tab[0][1][0] == "O" and tab[0][2][0] == "O"):
+    
+    if(tab[0][0][0] == "X" and tab[0][1][0] == "X" and tab[0][2][0] == "X" or 
+       tab[1][0][0] == "X" and tab[1][1][0] == "X" and tab[1][2][0] == "X" or
+       tab[2][0][0] == "X" and tab[2][1][0] == "X" and tab[2][2][0] == "X" or
+       tab[0][0][0] == "X" and tab[1][0][0] == "X" and tab[2][0][0] == "X" or
+       tab[0][1][0] == "X" and tab[1][1][0] == "X" and tab[2][1][0] == "X" or
+       tab[0][2][0] == "X" and tab[1][2][0] == "X" and tab[2][2][0] == "X" or
+       tab[0][0][0] == "X" and tab[1][1][0] == "X" and tab[2][2][0] == "X" or
+       tab[2][0][0] == "X" and tab[1][1][0] == "X" and tab[0][2][0] == "X"):
+        
         print("Parabéns {}!".format(nome))
         quit()
-
-    elif (tab[1][0][0] == "X" and tab[1][1][0] == "X" and tab[1][2][0] == "X") or (
-            tab[1][0][0] == "O" and tab[1][1][0] == "O" and tab[1][2][0] == "O"):
-        print("Parabéns {}!".format(nome))
-        quit()
-
-    elif (tab[0][0][0] == "X" and tab[2][1][0] == "X" and tab[2][2][0] == "X") or (
-            tab[2][0][0] == "O" and tab[2][1][0] == "O" and tab[2][2][0] == "O"):
-        print("Parabéns {}!".format(nome))
-        quit()
-
-    elif (tab[0][0][0] == "X" and tab[1][0][0] == "X" and tab[2][0][0] == "X") or (
-            tab[0][0][0] == "O" and tab[1][0][0] == "O" and tab[2][0][0] == "O"):
-        print("Parabéns {}!".format(nome))
-        quit()
-
-    elif (tab[0][1][0] == "X" and tab[1][1][0] == "X" and tab[2][1][0] == "X") or (
-            tab[0][1][0] == "O" and tab[1][1][0] == "O" and tab[2][1][0] == "O"):
-        print("Parabéns {}!".format(nome))
-        quit()
-
-    elif (tab[0][2][0] == "X" and tab[1][2][0] == "X" and tab[2][2][0] == "X") or (
-            tab[0][2][0] == "O" and tab[1][2][0] == "O" and tab[2][2][0] == "O"):
-        print("Parabéns {}!".format(nome))
-        quit()
-
-    if (tab[0][0][0] == "X" and tab[1][1][0] == "X" and tab[2][2][0] == "X") or (
-            tab[0][0][0] == "O" and tab[1][1][0] == "O" and tab[2][2][0] == "O"):
-        print("Parabéns {}!".format(nome))
-        quit()
-
-    elif (tab[0][2][0] == "X" and tab[1][1][0] == "X" and tab[2][0][0] == "X") or (
-            tab[0][2][0] == "O" and tab[1][1][0] == "O" and tab[2][0][0] == "O"):
+        
+    if(tab[0][0][0] == "O" and tab[0][1][0] == "O" and tab[0][2][0] == "O" or 
+       tab[1][0][0] == "O" and tab[1][1][0] == "O" and tab[1][2][0] == "O" or
+       tab[2][0][0] == "O" and tab[2][1][0] == "O" and tab[2][2][0] == "O" or
+       tab[0][0][0] == "O" and tab[1][0][0] == "O" and tab[2][0][0] == "O" or
+       tab[0][1][0] == "O" and tab[1][1][0] == "O" and tab[2][1][0] == "O" or
+       tab[0][2][0] == "O" and tab[1][2][0] == "O" and tab[2][2][0] == "O" or
+       tab[0][0][0] == "O" and tab[1][1][0] == "O" and tab[2][2][0] == "O" or
+       tab[2][0][0] == "O" and tab[1][1][0] == "O" and tab[0][2][0] == "O"):
+        
         print("Parabéns {}!".format(nome))
         quit()
         

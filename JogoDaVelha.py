@@ -59,7 +59,6 @@ def InserirPosicao(t):
 
 def VerifGanhou(nome):
     '''Verifica se o jogador venceu após sua jogada'''
-    
     if(tab[0][0][0] == "X" and tab[0][1][0] == "X" and tab[0][2][0] == "X" or 
        tab[1][0][0] == "X" and tab[1][1][0] == "X" and tab[1][2][0] == "X" or
        tab[2][0][0] == "X" and tab[2][1][0] == "X" and tab[2][2][0] == "X" or

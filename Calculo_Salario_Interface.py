@@ -7,8 +7,9 @@ class Application:
         self.fonteLabelPadrao = ("Arial", "10", "bold")
         self.fontePadrao = ("Arial", "10")
         self.padxPadrao = 50
-        self.widthLabelPadrao = 20
+        self.widthLabelPadrao = 25
         self.widthEntryPadrao = 30
+        self.tamanhoBotaoPadrao = 10
 
         # INTERFACE
         self.interface = Frame(master)
@@ -20,38 +21,25 @@ class Application:
         self.tituloContainer["pady"] = 5
         self.tituloContainer.pack()
 
-        # INSERIR DADOS
-        self.inserirContainer = Frame(self.interface)
-        self.inserirContainer.pack()
-
-        # DADOS DO USUÁRIO
-        self.dados = Frame(self.inserirContainer)
-        self.dados["pady"] = 10
-        self.dados.pack()
-
-        # DESCONTOS
-        self.desconto = Frame(self.inserirContainer)
-        self.desconto.pack()
-
-        # BENEFÍCIOS
-        self.beneficio = Frame(self.inserirContainer)
-        self.beneficio.pack()
-
-        # BOTÃO
-        self.botao = Frame(self.interface)
-        self.botao["pady"] = 10
-        self.botao.pack()
+        self.titulo = Label(self.tituloContainer, text="CALCULO SALARIAL", font=self.fonteTitulo)
+        self.titulo.pack()
 
         # =====================================================================================
         # ======================  CONTEÚDO  ===================================================
         # =====================================================================================
 
-        # TÍTULO
-        self.titulo = Label(self.tituloContainer, text="CALCULO SALARIAL", font=self.fonteTitulo)
-        self.titulo.pack()
+        # INSERIR DADOS
+        self.inserirContainer = Frame(self.interface)
+        self.inserirContainer.pack()
 
         self.div = Label(self.tituloContainer, text="_" * 90)
         self.div.pack()
+
+        # --------------------------------------------------------
+        # DADOS DO USUÁRIO
+        self.dados = Frame(self.inserirContainer)
+        self.dados["pady"] = 10
+        self.dados.pack()
 
         self.dadosLabel = Label(self.dados, text="DADOS", font=self.fonteTitulo)
         self.dadosLabel["pady"] = 10
@@ -130,12 +118,6 @@ class Application:
         self.horas["width"] = self.widthEntryPadrao
         self.horas.pack(side=RIGHT)
 
-    # def replacevalores(self):
-        # if str(self.salariob).isnumeric():
-            # salariob_r = str(self.salariob).replace(",", ".")
-        # else:
-            # self.salariob["text"] = "Valor inválido"
-
         self.div = Label(self.dados, text="_" * 90)
         self.div.pack()
 
@@ -143,7 +125,13 @@ class Application:
         # ======================  DESCONTOS  ==================================================
         # =====================================================================================
 
-        self.descontoLabel = Label(self.desconto, text="DESCONTOS (%)", font=self.fonteLabelPadrao)
+        # DESCONTOS
+        self.desconto = Frame(self.inserirContainer)
+        self.desconto.pack()
+
+        # --------------------------------------------------------
+
+        self.descontoLabel = Label(self.desconto, text="DESCONTOS (%)", font=self.fonteTitulo)
         self.descontoLabel["pady"] = 10
         self.descontoLabel.pack()
 
@@ -211,7 +199,13 @@ class Application:
         # ======================  BENEFÍCIOS  =================================================
         # =====================================================================================
 
-        self.beneficioLabel = Label(self.beneficio, text="BENEFÍCIOS", font=self.fonteLabelPadrao)
+        # BENEFÍCIOS
+        self.beneficio = Frame(self.inserirContainer)
+        self.beneficio.pack()
+
+        # --------------------------------------------------------
+
+        self.beneficioLabel = Label(self.beneficio, text="BENEFÍCIOS", font=self.fonteTitulo)
         self.beneficioLabel["pady"] = 10
         self.beneficioLabel.pack()
 
@@ -247,22 +241,67 @@ class Application:
         self.div.pack()
 
         # =====================================================================================
+        # ======================  SALVAR  =====================================================
+        # =====================================================================================
+
+        # SALVAR
+        self.salvar = Frame(self.interface)
+        self.salvar["pady"] = 10
+        self.salvar.pack()
+
+        # --------------------------------------------------------
+        self.salvarNome = Frame(self.salvar)
+        self.salvarNome.pack()
+
+        self.salvarLabel = Label(self.salvarNome, text="SALVAR", font=self.fonteTitulo)
+        self.salvarLabel["pady"] = 10
+        self.salvarLabel.pack()
+
+        self.nomeLabel = Label(self.salvarNome, text="NOME DO ARQUIVO (.TXT):", font=self.fonteLabelPadrao)
+        self.nomeLabel["width"] = self.widthLabelPadrao
+        self.nomeLabel.pack(side=LEFT)
+
+        self.nomeArq = Entry(self.salvarNome)
+        self.nomeArq["font"] = self.fontePadrao
+        self.nomeArq["width"] = self.widthEntryPadrao
+        self.nomeArq.pack(side=RIGHT)
+
+        self.div = Label(self.salvar, text="_" * 90)
+        self.div.pack()
+
+        # =====================================================================================
         # ======================  BOTÕES  =====================================================
         # =====================================================================================
 
-        # SAIR
-        self.sair = Button(self.botao)
-        self.sair["text"] = "Sair"
-        self.sair["font"] = self.fonteLabelPadrao
-        self.sair["command"] = self.interface.quit
-        self.sair.pack(side=LEFT)
+        # BOTÃO
+        self.botao = Frame(self.interface)
+        self.botao["pady"] = 10
+        self.botao.pack()
 
-        # LIMPAR
-        self.limpar = Button(self.botao)
-        self.limpar["text"] = "Limpar"
-        self.limpar["font"] = self.fonteLabelPadrao
-        self.limpar.bind("<Button-1>", self.limparEntry)
-        self.limpar.pack(side=LEFT)
+        # --------------------------------------------------------
+        # B - SAIR
+        self.bSair = Button(self.botao)
+        self.bSair["width"] = self.tamanhoBotaoPadrao
+        self.bSair["text"] = "Sair"
+        self.bSair["font"] = self.fonteLabelPadrao
+        self.bSair["command"] = self.interface.quit
+        self.bSair.pack(side=LEFT)
+
+        # B - LIMPAR
+        self.bLimpar = Button(self.botao)
+        self.bLimpar["width"] = self.tamanhoBotaoPadrao
+        self.bLimpar["text"] = "Limpar"
+        self.bLimpar["font"] = self.fonteLabelPadrao
+        self.bLimpar.bind("<Button-1>", self.limparEntry)
+        self.bLimpar.pack(side=LEFT)
+
+        # B - SALVAR
+        self.bSalvar = Button(self.botao)
+        self.bSalvar["width"] = self.tamanhoBotaoPadrao
+        self.bSalvar["text"] = "Salvar"
+        self.bSalvar["font"] = self.fonteLabelPadrao
+        self.bSalvar.bind("<Button-1>", self.salvarRes)
+        self.bSalvar.pack(side=LEFT)
 
     def limparEntry(self, event):
         self.nome.delete(0, 'end')
@@ -276,6 +315,69 @@ class Application:
         self.vt.delete(0, 'end')
         self.vr.delete(0, 'end')
         self.va.delete(0, 'end')
+        self.nomeArq.delete(0, 'end')
+
+    def salvarRes(self, event):
+        inss = int(str(self.inss.get()).replace(",", ".").strip())
+        sind = int(str(self.sindicato.get()).replace(",", ".").strip())
+        ir = int(str(self.imp.get()).replace(",", ".").strip())
+        vt = int(str(self.vt.get()).replace(",", ".").strip())
+
+        diat = int(str(self.diat.get()).replace(",", ".").strip())
+
+        vr = float(str(self.vr.get()).replace(",", ".").strip()) * diat
+        va = float(str(self.va.get()).replace(",", ".").strip())
+
+        nome_arq = str(self.nomeArq.get()).strip()
+        nome_arq += ".txt"
+
+        nome = str(self.nome.get()).strip().upper()
+
+        sb = float(str(self.salariob.get()).replace(",", ".").strip())
+
+        desc = inss + sind + ir + vt
+        sl = sb - desc
+
+        he = float(str(self.horae.get()).replace(":", ".").strip())
+        hs = float(str(self.horas.get()).replace(":", ".").strip())
+
+        ht = (hs - he) * diat
+
+        if ht == 220:
+            vh = sb / 220
+        else:
+            vh = sb / 180
+
+        with open(nome_arq, 'w', encoding='utf-8') as arq:
+            arq.write("\n")
+            arq.write("{:^43}".format("\nDADOS"))
+            arq.write("\n")
+            arq.write("_" * 43)
+
+            arq.write("\n\nNome: {}\n".format(nome))
+
+            arq.write("\nSalário Bruto: R${:.2f}".format(sb))
+            arq.write("\nSalário Líquido: R${:.2f}".format(sl))
+            arq.write("\nSalário Líquido + Benefícios: R${:.2f}\n".format(sl + va + vr))
+
+            arq.write("\nHoras Trabalhadas: {:.0f}h".format(ht))
+            arq.write("\nValor Hora: R${:.2f}".format(vh))
+
+            arq.write("\n\n\nDESCONTOS\n")
+            arq.write("_" * 43)
+            arq.write("\nValor dos Descontos: R${:.2f}".format(desc))
+
+            arq.write("\n\nINSS: R${:.2f}".format(inss))
+            arq.write("\nSindicato: R${:.2f}".format(sind))
+            arq.write("\nIR: R${:.2f}".format(ir))
+            arq.write("\nVale Transporte: R${:.2f}".format(vt))
+
+            arq.write("\n\n\nBENEFÍCIOS\n")
+            arq.write("_" * 43)
+            arq.write("\nValor dos Benefícios: R${:.2f}".format(vr + va))
+
+            arq.write("\n\nVale Refeição: R${:.2f}".format(vr))
+            arq.write("\nVale Alimentação: R${:.2f}".format(va))
 
 
 root = Tk()

@@ -284,7 +284,7 @@ class Application:
         self.bSair["width"] = self.tamanhoBotaoPadrao
         self.bSair["text"] = "Sair"
         self.bSair["font"] = self.fonteLabelPadrao
-        self.bSair["command"] = self.interface.quit
+        self.bSair["command"] = exit
         self.bSair.pack(side=LEFT)
 
         # B - LIMPAR
@@ -381,5 +381,6 @@ class Application:
 
 
 root = Tk()
+root.iconbitmap('calculation.png')
 Application(root)
 root.mainloop()

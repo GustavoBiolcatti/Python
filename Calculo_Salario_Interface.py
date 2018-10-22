@@ -318,10 +318,10 @@ class Application:
         self.nomeArq.delete(0, 'end')
 
     def salvarRes(self, event):
-        inss = int(str(self.inss.get()).replace(",", ".").strip())
-        sind = int(str(self.sindicato.get()).replace(",", ".").strip())
-        ir = int(str(self.imp.get()).replace(",", ".").strip())
-        vt = int(str(self.vt.get()).replace(",", ".").strip())
+        inss = int(str(self.inss.get()).replace(",", ".").replace("%", "").strip())
+        sind = int(str(self.sindicato.get()).replace(",", ".").replace("%", "").strip())
+        ir = int(str(self.imp.get()).replace(",", ".").replace("%", "").strip())
+        vt = int(str(self.vt.get()).replace(",", ".").replace("%", "").strip())
 
         diat = int(str(self.diat.get()).replace(",", ".").strip())
 

@@ -1,4 +1,24 @@
 from tkinter import *
+from cx_Freeze import setup, Executable
+
+base = None
+
+executables = [Executable("Calculo_Salario_Interface.py", base=base)]
+
+packages = ["idna"]
+options = {
+    'build_exe': {
+        'packages': packages,
+    },
+}
+
+setup(
+    name="Calculo_Salario",
+    options=options,
+    version="1.0",
+    description="",
+    executables=executables
+)
 
 
 class Application:
@@ -381,6 +401,5 @@ class Application:
 
 
 root = Tk()
-root.iconbitmap('calculation.png')
 Application(root)
 root.mainloop()

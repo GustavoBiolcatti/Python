@@ -1,24 +1,4 @@
 from tkinter import *
-from cx_Freeze import setup, Executable
-
-base = None
-
-executables = [Executable("Calculo_Salario_Interface.py", base=base)]
-
-packages = ["idna"]
-options = {
-    'build_exe': {
-        'packages': packages,
-    },
-}
-
-setup(
-    name="Calculo_Salario",
-    options=options,
-    version="1.0",
-    description="",
-    executables=executables
-)
 
 
 class Application:
@@ -52,7 +32,7 @@ class Application:
         self.inserirContainer = Frame(self.interface)
         self.inserirContainer.pack()
 
-        self.div = Label(self.tituloContainer, text="_" * 90)
+        self.div = Label(self.tituloContainer, text="_" * 95)
         self.div.pack()
 
         # --------------------------------------------------------
@@ -138,7 +118,7 @@ class Application:
         self.horas["width"] = self.widthEntryPadrao
         self.horas.pack(side=RIGHT)
 
-        self.div = Label(self.dados, text="_" * 90)
+        self.div = Label(self.dados, text="_" * 95)
         self.div.pack()
 
         # =====================================================================================
@@ -212,7 +192,7 @@ class Application:
         self.vt["width"] = self.widthEntryPadrao
         self.vt.pack(side=RIGHT)
 
-        self.div = Label(self.desconto, text="_" * 90)
+        self.div = Label(self.desconto, text="_" * 95)
         self.div.pack()
 
         # =====================================================================================
@@ -257,7 +237,7 @@ class Application:
         self.va["width"] = self.widthEntryPadrao
         self.va.pack(side=RIGHT)
 
-        self.div = Label(self.beneficio, text="_" * 90)
+        self.div = Label(self.beneficio, text="_" * 95)
         self.div.pack()
 
         # =====================================================================================
@@ -286,7 +266,7 @@ class Application:
         self.nomeArq["width"] = self.widthEntryPadrao
         self.nomeArq.pack(side=RIGHT)
 
-        self.div = Label(self.salvar, text="_" * 90)
+        self.div = Label(self.salvar, text="_" * 95)
         self.div.pack()
 
         # =====================================================================================

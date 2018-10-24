@@ -3,9 +3,9 @@ from tkinter import *
 
 class Application:
     def __init__(self, master=None):
-        self.fonteTitulo = ("Arial", "12", "bold")
-        self.fonteLabelPadrao = ("Arial", "10", "bold")
-        self.fontePadrao = ("Arial", "10")
+        self.fonteTitulo = ("Google Sans", "12", "bold")
+        self.fonteLabelPadrao = ("Google Sans", "10", "bold")
+        self.fontePadrao = ("Google Sans", "10")
         self.padxPadrao = 50
         self.widthLabelPadrao = 25
         self.widthEntryPadrao = 30
@@ -32,7 +32,7 @@ class Application:
         self.inserirContainer = Frame(self.interface)
         self.inserirContainer.pack()
 
-        self.div = Label(self.tituloContainer, text="_" * 95)
+        self.div = Label(self.tituloContainer, text="_" * 90)
         self.div.pack()
 
         # --------------------------------------------------------
@@ -118,7 +118,7 @@ class Application:
         self.horas["width"] = self.widthEntryPadrao
         self.horas.pack(side=RIGHT)
 
-        self.div = Label(self.dados, text="_" * 95)
+        self.div = Label(self.dados, text="_" * 90)
         self.div.pack()
 
         # =====================================================================================
@@ -192,7 +192,7 @@ class Application:
         self.vt["width"] = self.widthEntryPadrao
         self.vt.pack(side=RIGHT)
 
-        self.div = Label(self.desconto, text="_" * 95)
+        self.div = Label(self.desconto, text="_" * 90)
         self.div.pack()
 
         # =====================================================================================
@@ -237,7 +237,7 @@ class Application:
         self.va["width"] = self.widthEntryPadrao
         self.va.pack(side=RIGHT)
 
-        self.div = Label(self.beneficio, text="_" * 95)
+        self.div = Label(self.beneficio, text="_" * 90)
         self.div.pack()
 
         # =====================================================================================
@@ -266,7 +266,7 @@ class Application:
         self.nomeArq["width"] = self.widthEntryPadrao
         self.nomeArq.pack(side=RIGHT)
 
-        self.div = Label(self.salvar, text="_" * 95)
+        self.div = Label(self.salvar, text="_" * 90)
         self.div.pack()
 
         # =====================================================================================
@@ -284,7 +284,7 @@ class Application:
         self.bSair["width"] = self.tamanhoBotaoPadrao
         self.bSair["text"] = "Sair"
         self.bSair["font"] = self.fonteLabelPadrao
-        self.bSair["command"] = exit
+        self.bSair["command"] = self.interface.quit
         self.bSair.pack(side=LEFT)
 
         # B - LIMPAR
@@ -319,27 +319,32 @@ class Application:
 
     def salvarRes(self, event):
         inss = int(str(self.inss.get()).replace(",", ".").replace("%", "").strip())
+
         sind = int(str(self.sindicato.get()).replace(",", ".").replace("%", "").strip())
+
         ir = int(str(self.imp.get()).replace(",", ".").replace("%", "").strip())
+
         vt = int(str(self.vt.get()).replace(",", ".").replace("%", "").strip())
 
         diat = int(str(self.diat.get()).replace(",", ".").strip())
 
         vr = float(str(self.vr.get()).replace(",", ".").strip()) * diat
+
         va = float(str(self.va.get()).replace(",", ".").strip())
+
+        sb = float(str(self.salariob.get()).replace(",", ".").strip())
+
+        he = float(str(self.horae.get()).replace(":", ".").strip())
+
+        hs = float(str(self.horas.get()).replace(":", ".").strip())
 
         nome_arq = str(self.nomeArq.get()).strip()
         nome_arq += ".txt"
 
         nome = str(self.nome.get()).strip().upper()
 
-        sb = float(str(self.salariob.get()).replace(",", ".").strip())
-
         desc = inss + sind + ir + vt
         sl = sb - desc
-
-        he = float(str(self.horae.get()).replace(":", ".").strip())
-        hs = float(str(self.horas.get()).replace(":", ".").strip())
 
         ht = (hs - he) * diat
 

@@ -1,6 +1,5 @@
 from tkinter import *
 
-
 class Application:
     def __init__(self, master=None):
         self.fonteTitulo = ("Google Sans", "12", "bold")

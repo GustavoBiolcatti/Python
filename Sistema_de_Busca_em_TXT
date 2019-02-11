@@ -1,11 +1,17 @@
 import re
 
-arqv = input("Digite o nome do aquivo: ")
 lst = list()
+linha_ref = list()
+count = 0
+
+print("-"*40)
+
+arqv = input("\nDigite o nome do aquivo: ")
 
 # Verifica a existência do arquivo digitado
 try:
 	text = open(arqv)
+	# text = open("sample_data.txt")
 except:
 	try:
 		arqv += ".txt"
@@ -38,7 +44,8 @@ except:
 # ------------------------------------------------------------- #
 # BUSCA
 
-#Procura por números no texto
+# NÚMERO
+# Procura por números no texto
 if tbusc == 1:
 	print("-"*40)
 	print("{:^40}".format("NÚMEROS"))
@@ -64,15 +71,32 @@ if tbusc == 1:
 	num_final = sorted(num_final)
 
 	# Resultados encontrados
-	print("\nNúmeros encontrados no texto...")
+	print("\nNúmeros encontrados no texto...\n")
 	for i in num_final:
 		print(i)
 
-#Procura por texto específico
+# TEXTO
+# Procura por texto específico
 elif tbusc == 2:
 	print("-"*40)
 	print("{:^40}".format("TEXTO"))
 	print("-"*40)
+
+	print("\nDigite o texto que deseja encontrar:")
+	prmt = input()
+
+	if len(prmt) < 1:
+		print("Nenhum texto digitado!")
+		quit()
+
+	for line in text:
+		count += 1
+		res = re.findall(prmt, line)
+
+		if res < 1:
+			continue
+
+		linha_ref.append(count)
 
 else:
 	print("Opção inválida!")

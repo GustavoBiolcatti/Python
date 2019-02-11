@@ -1,0 +1,78 @@
+import re
+
+arqv = input("Digite o nome do aquivo: ")
+lst = list()
+
+# Verifica a existência do arquivo digitado
+try:
+	text = open(arqv)
+except:
+	try:
+		arqv += ".txt"
+		text = open(arqv)
+	except:
+		# Mensagem será exibida caso não encontre o arquivo
+		print("\n404 - File not found!")
+		print("Verifique o nome/extensão do arquivo e se o arquivo está no mesmo local do programa.")
+		quit()
+
+# ------------------------------------------------------------- #
+# OPÇÕES DE BUSCA
+
+print()
+print("-"*40)
+print("1 - Números \n2 - Texto")
+print("-"*40)
+print()
+
+print("O que deseja procurar?")
+tbusc = input()
+print()
+
+try:
+	tbusc = int(tbusc)
+except:
+	print("Opção inválida!")
+	quit()
+
+# ------------------------------------------------------------- #
+# BUSCA
+
+#Procura por números no texto
+if tbusc == 1:
+	print("-"*40)
+	print("{:^40}".format("NÚMEROS"))
+	print("-"*40)
+
+	# Apresenta todos os números encontrados no texto
+	for line in text:
+		num = re.findall("[0-9]+", line)
+
+		if len(num) < 1:
+			continue
+		elif len(num) != 1:
+			for i in num:
+				n = int(i)
+				lst.append(n)
+		else:
+			n = int(num[0])
+			lst.append(n)
+
+	# Cria uma tupla para retirar valores repitidos
+	num_final = tuple(lst)
+	# Ordena os números - crescente
+	num_final = sorted(num_final)
+
+	# Resultados encontrados
+	print("\nNúmeros encontrados no texto...")
+	for i in num_final:
+		print(i)
+
+#Procura por texto específico
+elif tbusc == 2:
+	print("-"*40)
+	print("{:^40}".format("TEXTO"))
+	print("-"*40)
+
+else:
+	print("Opção inválida!")

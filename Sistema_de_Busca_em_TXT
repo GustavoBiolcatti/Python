@@ -1,7 +1,6 @@
 import re
 
 lst = list()
-linha_ref = list()
 count = 0
 
 print("-"*40)
@@ -17,6 +16,7 @@ except:
 		arqv += ".txt"
 		text = open(arqv)
 	except:
+                
 		# Mensagem será exibida caso não encontre o arquivo
 		print("\n404 - File not found!")
 		print("Verifique o nome/extensão do arquivo e se o arquivo está no mesmo local do programa.")
@@ -85,18 +85,25 @@ elif tbusc == 2:
 	print("\nDigite o texto que deseja encontrar:")
 	prmt = input()
 
+	print("\n\nBUSCANDO...")
+	print("="*40)
+
 	if len(prmt) < 1:
 		print("Nenhum texto digitado!")
 		quit()
 
 	for line in text:
 		count += 1
-		res = re.findall(prmt, line)
+		res = re.findall(prmt.lower(), line.lower())
 
-		if res < 1:
+		if len(res) < 1:
 			continue
 
-		linha_ref.append(count)
+		count += 1
+		print(line)
+		print("-----")
+		lst.append(line)
 
+	print("\n\nRESULTADO ENCONTRADO EM {} LINHAS".format(len(lst)))
 else:
 	print("Opção inválida!")

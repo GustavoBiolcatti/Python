@@ -99,8 +99,7 @@ elif tbusc == 2:
 		if len(res) < 1:
 			continue
 
-		count += 1
-		print(line)
+		print("Linha: {} || '{}'".format(count,line))
 		print("-----")
 		lst.append(line)
 

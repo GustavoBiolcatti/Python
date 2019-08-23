@@ -1,281 +1,163 @@
-# NOME COMPLETO
-verif_nome= True
-while verif_nome:
-    nome = str(input("\nDigite seu nome completo: ").upper().strip())
+import math
 
-    if nome != "":
-        verif_nome = False
-    else:
-        print("Nome não preenchido! Digite novamente.")
+n = input("Digite o número a ser convertido: ").upper()
+n_base = 16 # n_base = int(input("Digite a base do número: "))
 
-# SALÁRIO BRUTO
-verif_sb = True
-while verif_sb:
-    sb = input("\nDigite seu salário bruto: ").replace(",", ".")
+i = 0
 
-    if sb.isalpha():
-        print("Valor inválido! Digite novamente.")
-    else:
-        sb = float(sb)
-        verif_sb = False
+base2 = []
+base8 = []
+base10 = 0
+base16 = []
 
-# DIAS TRABALHADOS
-verif_dt = True
-while verif_dt:
-    dt = input("\nDigite a quantidade de dias trabalhados: ").replace(",", ".")
+letra_base16 = {10: "A",
+                11: "B",
+                12: "C",
+                13: "D",
+                14: "E",
+                15: "F",
+                "A": 10,
+                "B": 11,
+                "C": 12,
+                "D": 13,
+                "E": 14,
+                "F": 15,}
 
-    if dt.isnumeric():
-        dt = int(dt)
-        verif_dt = False
-    else:
-        print("Valor inválido! Digite novamente.")
+# +=========================================================================+ #
+# |                                  DECIMAL                                | #
+# +=========================================================================+ #
 
-# HORÁRIO DE ENTRADA
-verif_he = True
-while verif_he:
-    he = input("\nDigite seu horário de entrada: ").replace(":", ".")
-
-    if he.isalpha():
-        print("Valor inválido! Digite novamente.")
-    else:
-        he = float(he)
-        verif_he = False
-
-# HORÁRIO DE SAÍDA
-verif_hs = True
-while verif_hs:
-    hs = input("\nDigite seu horário de saída: ").replace(":", ".")
-
-    if hs.isalpha():
-        print("Valor inválido! Digite novamente.")
-    else:
-        hs = float(hs)
-        verif_hs = False
-        
-# HORAS TRABALHADAS
-ht = (hs - he) * dt
-
-if ht == 220:
-    vh = sb / 220
-else:
-    vh = sb / 180
-
-# =====================================================================================================================
-# DESCONTOS
-# =====================================================================================================================
-print("\n")
-print("-" * 43)
-print("{:^43}".format("DESCONTOS"))
-print("-" * 43)
-
-# INSS
-verif_inss = True
-while verif_inss:
-    c_inss = str(input("\nÉ descontado INSS? ('s' ou 'n') ").lower())
-
-    if c_inss == "s" or c_inss == "n":
-        if c_inss == "s":
-            inss = float(sb * int(input("Qual a porcentagem (%) de desconto? ").replace(",", ".")) / 100)
-        else:
-            inss = 0
-
-        verif_inss = False
-    else:
-        print("Nenhuma opção selecionada! Digite novamente.")
-
-# SINDICATO
-verif_sind = True
-while verif_sind:
-    c_sind = str(input("\nÉ descontado sindicato? ('s' ou 'n') ").lower())
-
-    if c_sind == "s" or c_sind == "n":
-        if c_sind == "s":
-            sind = float(sb * int(input("Qual a porcentagem (%) de desconto? ").replace(",", ".")) / 100)
-        else:
-            sind = 0
-
-        verif_sind = False
-    else:
-        print("Nenhuma opção selecionada! Digite novamente.")
-
-# IMPOSTO DE RENDA
-verif_ir = True
-while verif_ir:
-    c_ir = str(input("\nÉ descontado IR? ('s' ou 'n') ").lower())
-
-    if c_ir == "s" or c_ir == "n":
-        if c_ir == "s":
-            ir = float(sb * int(input("Qual a porcentagem (%) de desconto? ").replace(",", ".")) / 100)
-        else:
-            ir = 0
-
-        verif_ir = False
-    else:
-        print("Nenhuma opção selecionada! Digite novamente.")
-
-# VALE TRANSPORTE COM DESCONTO
-verif_vt = True
-while verif_vt:
-    c_vt = str(input("\nÉ descontado vale transporte? ('s' ou 'n') ").lower())
-
-    if c_vt == "s" or c_vt == "n":
-        if c_vt == "s":
-            vt = float(sb * int(input("Qual a porcentagem (%) de desconto? ").replace(",", ".")) / 100)
-        else:
-            vt = 0
-
-        verif_vt = False
-    else:
-        print("Nenhuma opção selecionada! Digite novamente.")
-
-# =====================================================================================================================
-# BENEFÍCIOS
-# =====================================================================================================================
-print("\n")
-print("-" * 43)
-print("{:^43}".format("BENEFÍCIOS"))
-print("-" * 43)
-
-# VALE TRANSPORTE SEM DESCONTO
-if c_vt == "n":
-    verif_vt_b = True
-    while verif_vt_b:
-        c_vt_b = input("\nDigite o valor para transporte diário recebido: R$").replace(",", ".")
-
-        if not c_vt_b.isalpha():
-            vt_b = float(c_vt_b) * dt
-            verif_vt_b = False
-        else:
-            print("Nenhum valor inserido! Digite novamente.")
-
-# VALE REFEIÇÃO
-c_vr = str(input("\nPossui vale refeição? ('s' ou 'n') ").lower())
-if c_vr == "s":
-    vr = float(input("Digite o valor diário: R$").replace(",", "."))
-    vr = vr*dt
-else:
-    vr = 0
-
-# VALE ALIMENTAÇÃO
-c_va = str(input("\nPossui vale alimentação? ('s' ou 'n') ").lower())
-if c_va == "s":
-    va = float(input("Digite o valor (por dia): R$").replace(",", ".")) * dt
-
-else:
-    va = 0
-
-sl = float(sb - (inss + sind + ir + vt))
-
-# =====================================================================================================================
-# VERIFICAÇÃO DE SALVAMENTO
-# =====================================================================================================================
-verif_save = True
-while verif_save:
-    save = input("\nDeseja salvar o resultado? ('s' ou 'n') ").lower()
-
-    if save == "s" or save == "n":
-        verif_save = False
-    else:
-        print("Nenhuma opção selecionada! Digite novamente.")
-
-if save == "s":
-    # SALVAR OS RESULTADOS
-    verif_nomearq = True
-    while verif_nomearq:
-        nome_arq = input("Digite o nome do arquivo: ")
-
-        if nome_arq == "":
-            verif_nomenull = True
-            while verif_nomenull:
-                nome_null = input("\nO nome do arquivo não foi preenchido!\nDeseja continuar mesmo assim? ('s' ou 'n') ")
-
-                if nome_null == "s" or nome_null == "n":
-                    verif_nomenull = False
-                else:
-                    print("Nenhuma opção selecionada! Digite novamente.")
-
-        else:
-            nome_arq += ".txt"
-            verif_nomearq = False
-
-    with open(nome_arq, 'w', encoding='utf-8') as arq:
-        arq.write("\n")
-        arq.write("{:^43}".format("\nDADOS"))
-        arq.write("\n")
-        arq.write("_" * 43)
-
-        arq.write("\n\nNome: {}\n".format(nome))
-
-        arq.write("\nSalário Bruto: R${:.2f}".format(sb))
-        arq.write("\nSalário Líquido: R${:.2f}".format(sl))
-        arq.write("\nSalário Líquido + Benefícios: R${:.2f}\n".format(sl + va + vr))
-
-        arq.write("\nHoras Trabalhadas: {:.0f}h".format(ht))
-        arq.write("\nValor Hora: R${:.2f}".format(vh))
-
-        arq.write("\n\n\nDESCONTOS\n")
-        arq.write("_" * 43)
-        arq.write("\nValor dos Descontos: R${:.2f}".format(inss + sind + ir + vt))
-
-        arq.write("\nINSS: R${:.2f}".format(inss))
-        arq.write("\nSindicato: R${:.2f}".format(sind))
-        arq.write("\nIR: R${:.2f}".format(ir))
-
-        if c_vt == "s":
-            arq.write("\nVale Transporte: R${:.2f}".format(vt))
-
-        arq.write("\n\n\nBENEFÍCIOS\n")
-        arq.write("_" * 43)
-
-        if c_vt == "n":
-            arq.write("\nTotal dos Benefícios: R${:.2f}".format(va + vr + vt_b))
-        else:
-            arq.write("\nTotal dos Benefícios: R${:.2f}".format(va + vr))
-
-        if c_vt == "n":
-            arq.write("\nVale Transporte: R${:.2f}".format(vt_b))
-
-        arq.write("\nVale Refeição: R${:.2f}".format(vr))
-        arq.write("\nVale Alimentação: R${:.2f}".format(va))
-
-else:
-    # NÃO SALVAR OS RESULTADOS
-    print("\n\n")
-    print("-" * 43)
-    print("{:^43}".format("DADOS"))
-    print("-" * 43)
-
-    print("\nNome: {}".format(nome))
-
-    print("\nSalário Bruto: R${:.2f}".format(sb))
-    print("Salário Líquido: R${:.2f}".format(sl))
-    print("\nSalário Líquido + Benefícios: R${:.2f}".format(sl + va + vr))
-
-    print("\nHoras Trabalhadas: {:.0f}h".format(ht))
-    print("Valor Hora: R${:.2f}".format(vh))
-
-    print("\n\nDESCONTOS")
-    print("_" * 43)
-    print("Valor dos Descontos: R${:.2f}".format(inss + sind + ir + vt))
-
-    print("\nINSS: R${:.2f}".format(inss))
-    print("Sindicato: R${:.2f}".format(sind))
-    print("IR: R${:.2f}".format(ir))
-
-    if c_vt == "s":
-        print("Vale Transporte: R${:.2f}".format(vt))
-
-    print("\n\nBENEFÍCIOS")
-    print("_" * 43)
-
-    if c_vt == "n":
-        print("Total dos Benefícios: R${:.2f}".format(va + vr + vt_b))
-    else:
-        print("Total dos Benefícios: R${:.2f}".format(va + vr))
-
-    if c_vt == "n":
-        print("\nVale Transporte: R${:.2f}".format(vt_b))
-
-    print("\nVale Refeição: R${:.2f}".format(vr))
-    print("Vale Alimentação: R${:.2f}".format(va))
+if n_base == 10:
     
+    # DECIMAL PARA BINÁRIO
+    val = int(n)
+    while True:
+        if val >= 2:
+            resto = val % 2
+            base2.append(math.trunc(resto))
+            
+            val = val / 2
+        else:
+            base2.append(math.trunc(val))
+            base2 = base2[::-1]
+            break
+    
+    
+    # DECIMAL PARA OCTAL
+    val = int(n)
+    while True:
+        if val >= 8:
+            resto = val % 8
+            base8.append(math.trunc(resto))
+            
+            val = val / 8
+        else:
+            base8.append(math.trunc(val))
+            base8 = base8[::-1]
+            break
+    
+    
+    # DECIMAL PARA HEXADECIMAL
+    val = int(n)
+    while True:
+        if val >= 16:
+            resto = val % 16
+            if resto < 10:
+                base16.append(math.trunc(resto))
+            else:
+                base16.append(letra_base16[math.trunc(resto)])
+            
+            val = val / 16
+        else:
+            if val < 10:
+                base16.append(math.trunc(val))
+            else:
+                base16.append(letra_base16[math.trunc(val)])
+            
+            base16 = base16[::-1]
+            break
+    
+    print("\nBASE 2:  ", *base2, sep="")
+    print("BASE 8:  ", *base8, sep="")
+    print("BASE 16: ", *base16, sep="")
+    
+# +=========================================================================+ #
+# |                                  OCTAL                                  | #
+# +=========================================================================+ #
+    
+elif n_base == 8:
+    
+    # OCTAL PARA BINÁRIO
+    val = n
+    
+    for num in val:
+        i = 2
+        while i >= 0:
+            num = int(num)
+            if (num - 2**i) >= 0:
+                num = num - 2**i
+                base2.append(1)
+            else:
+                base2.append(0)
+                
+            i -= 1
+    
+    # se houve, remove os números '0' do começo do binário
+    while base2[0] == 0:
+        base2.remove(0)
+
+
+    # OCTAL PARA DECIMAL
+    val = n
+    i = 0
+    
+    for num in val[::-1]:
+        base10 += int(num) * (8**i)
+        i += 1
+    
+    print("\nBASE 2:  ", *base2, sep="")
+    print("BASE 10: ", base10)
+    
+# +=========================================================================+ #
+# |                                HEXACIMAL                                | #
+# +=========================================================================+ #
+    
+elif n_base == 16:
+    
+    # OCTAL PARA BINÁRIO
+    val = n
+    
+    for num in val:
+        i = 3
+        while i >= 0:
+            num = int(num)
+            if (num - 2**i) >= 0:
+                num = num - 2**i
+                base2.append(1)
+            else:
+                base2.append(0)
+                
+            i -= 1
+    
+    # se houve, remove os números '0' do começo do binário
+    while base2[0] == 0:
+        base2.remove(0)
+    
+    
+    # HEXADECIMAL PARA DECIMAL
+    val = list(n)
+    i = 0
+    
+    for num in val[::-1]:
+        if num.isnumeric():
+            num = int(num)
+        else:
+            num = letra_base16[num]
+        
+        base10 += int(num) * (16**i)
+        i += 1
+        
+    print("\nBASE 2:  ", *base2, sep="")
+    print("BASE 10: ", base10)
+    
+# BUILDING AREA - BE CAREFULL
